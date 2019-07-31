@@ -17,7 +17,10 @@ headerParser(app);
 const urlShortener = require('./projects/url-shortener.js');
 urlShortener(app);
 const exerciseTracker = require('./projects/exercise-tracker.js')
-exerciseTracker(app)
+exerciseTracker(app);
+const fileMetadata = require('./projects/file-metadata.js');
+fileMetadata(app);
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
