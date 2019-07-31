@@ -77,27 +77,37 @@ module.exports = function(app){
         userName = req.query.userName,
         fromDate = req.query.from,
         toDate = req.query.to,
+        limit = req.query.limit,
         display = {},
+        displayLog = [],
         currentUser;
     
     if(userId && userName) return res.send("Please input either <strong>username</strong> or <strong>userid</strong>, not both");
     if(userId) currentUser = await User.findById(userId, (err, data) => {});
     if(userName) currentUser = await User.findOne({username: userName}, (err, data) => {});
-    //console.log(currentUser.log.find({date: '2019-08-31'}));
-    // console.log(new Date(currentUser.log[0].date).toDateString(), currentUser.log[0].date)
-    
+    if(!limit) limit = currentUser.log.length - 1;
+    let userLog = currentUser.log
+    /*
     let displayLog = currentUser.log.filter(entry => {
-      let passes = true;
-      if (fromDate && new Date(entry.date) <= new Date(fromDate)) passes = false;
-      if (toDate && new Date(entry.date) >= new Date(toDate)) passes = false;
+      let inDateRange = true;
+      if (fromDate && new Date(entry.date) <= new Date(fromDate)) inDateRange = false;
+      if (toDate && new Date(entry.date) >= new Date(toDate)) inDateRange = false;
       console.log(passes)
       return passes;
     })
     
-    displayLog = displayLog.map(entry => {
+    displayLog = displayLog.map((entry, index) => {
       let displayEntry = {description: entry.description, duration: entry.duration, date: new Date(entry.date).toDateString()}
-      return displayEntry
+      if (index < limit) return displayEntry
     })
+    */
+    
+    for(let i = 0; i < limit; i++) {
+      if (fromDate && new Date(userLog[i].date) <= new Date(fromDate)) break;
+      if (toDate && new Date(userLog[i].date) >= new Date(toDate)) break;
+      let displayEntry = {description: userLog[i].description, duration: userLog[i].duration, date: new Date(userLog[i].date).toDateString()}
+      displayLog.push(displayEntry);
+    }
     
     display._id = currentUser._id;
     display.username = currentUser.username;

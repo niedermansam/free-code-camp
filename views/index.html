@@ -84,10 +84,10 @@
       </form>
       
       
-            <!--
+      <!--
       ==================================================
 
-      Links and instructions for Exercize Tracker
+      Links and instructions for Exercise Tracker
 
       ===================================================
       -->
@@ -107,6 +107,23 @@
         <input type = "date" name="date" placeholder="date (yyyy-mm-dd)" required>
         <input type="submit">
       </form>
+      
+            <!--
+      ==================================================
+
+      Links and instructions for File Metadata Service
+
+      ===================================================
+      -->
+      <h2>
+              File Metadata Microservice
+      </h2>
+      
+      <form action="/api/fileanalyse" method="post" encType="multipart/form-data">
+        <input type="file" name="upfile">
+        <input type="submit">
+      </form>
+      
     </main>
 
     <footer>
