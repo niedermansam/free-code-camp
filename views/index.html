@@ -83,6 +83,30 @@
         <input  type="submit"/>
       </form>
       
+      
+            <!--
+      ==================================================
+
+      Links and instructions for Exercize Tracker
+
+      ===================================================
+      -->
+      <h2>
+              Exercise Tracker
+      </h2>
+      <form action="/api/exercise/new-user" method="post">
+        <label>Create New User</label>
+        <input type="text" name="username" placeholder="username">
+        <input type="submit">
+      </form>
+      <form action="/api/exercise/add" method="post">
+        <label>Add exercises</label>
+        <input type = "text" name="userid" placeholder="User Id*" required>
+        <input type = "text" name="description" placeholder="description*" required>
+        <input type = "number" name="duration" placeholder="duration* (minutes)" required>
+        <input type = "date" name="date" placeholder="date (yyyy-mm-dd)" required>
+        <input type="submit">
+      </form>
     </main>
 
     <footer>

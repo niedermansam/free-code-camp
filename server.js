@@ -6,14 +6,18 @@
 
 // init project
 const express = require('express');
-const app = express();
+
+const app = express();  
+  
+
 const timeStamp = require('./projects/timestamp.js');
 timeStamp(app);
 const headerParser = require('./projects/header-parser.js');
 headerParser(app);
 const urlShortener = require('./projects/url-shortener.js');
 urlShortener(app);
-
+const exerciseTracker = require('./projects/exercise-tracker.js')
+exerciseTracker(app)
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
